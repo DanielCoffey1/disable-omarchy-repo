@@ -34,4 +34,9 @@ echo
 echo "Done. Resulting omarchy section:"
 grep -n -E '^#?\[omarchy\]|^#?SigLevel|^#?Server.*omarchy' "$CONF" || true
 echo
+if grep -q 'stable-mirror\.omarchy\.org' /etc/pacman.d/mirrorlist 2>/dev/null; then
+  echo "Note: /etc/pacman.d/mirrorlist still uses Omarchy's Arch mirror."
+  echo "Run './switch-to-arch-mirrors.sh' if you want regular Arch mirrors."
+  echo
+fi
 echo "Run 'sudo pacman -Syu' to refresh databases without omarchy."
